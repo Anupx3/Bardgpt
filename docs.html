@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Documentation</title>
+    <style>
+        /* CSS untuk tampilan menu ke bawah */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #sidebar {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        #content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        /* CSS untuk tampilan kode dokumentasi */
+        .code-container {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>API Endpoints</h2>
+        <input type="radio" name="endpoint" id="endpoint1" onchange="showDocumentation('endpoint1')">
+        <label for="endpoint1">google Bard</label><br>
+        <input type="radio" name="endpoint" id="endpoint2" onchange="showDocumentation('endpoint2')">
+        <label for="endpoint2">Chat GPT</label><br>
+        <!-- Tambahkan daftar endpoint lainnya di sini -->
+    </div>
+
+    <div id="content">
+        <h1>Anup Api</h1>
+        <div id="documentation">
+        </div>
+    </div>
+
+    <script>
+        function showDocumentation(endpoint) {
+            let documentation = "";
+            switch (endpoint) {
+                case "endpoint1":
+                    documentation = `
+                        <div class="code-container">
+                            <h3>Exemple</h3>
+                            <pre>
+                                <code>
+                                    // Import Axios library
+const axios = require('axios');
+
+// URL API yang akan diakses
+const apiUrl = 'https://biodegradablearidkernel--rikipurwanto.repl.co/ai/apa%20itu%20ikan';
+
+// Gunakan Axios untuk melakukan HTTP GET request ke API
+axios.get(apiUrl)
+  .then(response => {
+    // Ketika permintaan berhasil, data API akan berada di 'response.data'
+    console.log('Data API:');
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Ketika terjadi kesalahan, akan ditangkap di sini
+    console.error('Error:', error.message);
+  });
+
+                                </code>
+                            </pre>
+                        </div>
+                    `;
+                    break;
+                case "endpoint2":
+                    documentation = `
+                        <div class="code-container">
+                            <h3>Exemple</h3>
+                            <pre>
+                                <code>
+                                    // Impor library Axios
+const axios = require('axios');
+
+// URL dari API yang akan diakses
+const apiUrl = 'https://biodegradablearidkernel--rikipurwanto.repl.co/gpt?q=apa%20itu%20ikan';
+
+// Menggunakan Axios untuk melakukan permintaan GET ke API
+axios.get(apiUrl)
+  .then(response => {
+    // Response dari API berhasil diterima
+    const data = response.data;
+    console.log('Data dari API:', data);
+  })
+  .catch(error => {
+    // Terjadi kesalahan dalam permintaan ke API
+    console.error('Error:', error.message);
+  });
+
+                                </code>
+                            </pre>
+                        </div>
+                    `;
+                    break;
+                // Tambahkan case untuk setiap endpoint lainnya di sini
+                default:
+                    documentation = "<p>Pilih endpoint dari menu di samping</p>";
+                    break;
+            }
+            document.getElementById("documentation").innerHTML = documentation;
+        }
+    </script>
+</body>
+</html>
