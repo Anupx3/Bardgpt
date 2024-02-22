@@ -65,9 +65,9 @@ app.get('/play', async (req, res) => {
 
     const video = searchResult.videos[0].link;
     const info = searchResult.videos[0]
-    const ini = 'https://aliya-2.0xanupx0.repl.co/youtube?url='+video
+    const ini = 'https://api-darkster.onrender.com/youtube?url='+video
 
-    const inu = 'https://aliya-2.0xanupx0.repl.co/ytmp4?url='+video
+    const inu = 'https://api-darkster.onrender.com/ytmp4?url='+video
 
 const data = ({creator : "Anup-Api",info, mp3 : ini , mp4 : inu })
     const jsonData = JSON.stringify(data, null, 2);
